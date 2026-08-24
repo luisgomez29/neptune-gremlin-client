@@ -111,6 +111,44 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Package the source jar. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Package the javadoc jar. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <name>Neptune Endpoints Info Lambda</name>
+                    <encoding>UTF-8</encoding>
+                    <sourcepath>${project.build.sourceDirectory}</sourcepath>
+                    <bottom>
+                        <![CDATA[<center>Copyright &#169; 2021 Amazon.com. All Rights Reserved.</center>]]>
+                    </bottom>
+                    <additionalOptions>-Xdoclint:none</additionalOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
